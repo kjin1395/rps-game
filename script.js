@@ -31,35 +31,53 @@ function compareChoices(user, computer) {
 
     if (userFirstChar === "r") {
         if (computerFirstChar === "r") {
-            console.log("You Tied! You both chose rock.");
+            const tiedResult = document.createElement('p');
+            tiedResult.textContent = 'You Tied! You both chose rock.';
+            document.querySelector('.results').appendChild(tiedResult);
             return 3;
         } else if (computerFirstChar === "p") {
-            console.log("You Lose! Paper beats rock.");
+            const lossResult = document.createElement('p');
+            lossResult.textContent = 'You Lose! Paper beats rock.';
+            document.querySelector('.results').appendChild(lossResult);
             return 2;
         } else if (computerFirstChar === "s") {
-            console.log("You Win! Rock beats scissors.");
+            const winResult = document.createElement('p');
+            winResult.textContent = 'You Win! Rock beats scissors.';
+            document.querySelector('.results').appendChild(winResult);
             return 1;
         }
     } else if (userFirstChar === "p") {
         if (computerFirstChar === "r") {
-            console.log("You Win! Paper beats rock.");
+            const winResult = document.createElement('p');
+            winResult.textContent = 'You Win! Paper beats rock.';
+            document.querySelector('.results').appendChild(winResult);
             return 1;
         } else if (computerFirstChar === "p") {
-            console.log("You Tied! You both chose paper.");
+            const tiedResult = document.createElement('p');
+            tiedResult.textContent = 'You Tied! You both chose paper.';
+            document.querySelector('.results').appendChild(tiedResult);
             return 3;
         } else if (computerFirstChar === "s") {
-            console.log("You Lose! Scissors beats paper.");
+            const lossResult = document.createElement('p');
+            lossResult.textContent = 'You Lose! Scissors beats paper.';
+            document.querySelector('.results').appendChild(lossResult);
             return 2;
         }
     } else if (userFirstChar === "s") {
         if (computerFirstChar === "r") {
-            console.log("You Lose! Rock beats scissors.");
+            const lossResult = document.createElement('p');
+            lossResult.textContent = 'You Lose! Rock beats scissors.';
+            document.querySelector('.results').appendChild(lossResult);
             return 2;
         } else if (computerFirstChar === "p") {
-            console.log("You Win! Scissors beats paper.");
+            const winResult = document.createElement('p');
+            winResult.textContent = 'You Win! Scissors beats paper.';
+            document.querySelector('.results').appendChild(winResult);
             return 1;
         } else if (computerFirstChar === "s") {
-            console.log("You Tied! You both chose scissors.");
+            const tiedResult = document.createElement('p');
+            tiedResult.textContent = 'You Tied! You both chose scissors.';
+            document.querySelector('.results').appendChild(tiedResult);
             return 3;
         }
     } else { // user inputs any character besides r, p, s
@@ -70,8 +88,13 @@ function compareChoices(user, computer) {
 function playRound(userInput) {
     // let userInput;
     let computerInput = computerPlay();
-    console.log(userInput);
-    console.log(computerInput);
+    const results = document.querySelector('.results');
+    const userSelection = document.createElement('p');
+    const computerSelection = document.createElement('p');
+    userSelection.textContent = `You chose ${userInput}`;
+    computerSelection.textContent = `Computer chose ${computerInput}`;
+    results.appendChild(userSelection);
+    results.appendChild(computerSelection);
     compareChoices(userInput, computerInput);
 }
 
@@ -146,4 +169,3 @@ buttons.addEventListener('click', (e) => {
 /* input.addEventListener('click', () => {
     playRound(input.value);
 }); */
-
