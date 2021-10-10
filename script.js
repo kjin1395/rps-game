@@ -4,15 +4,15 @@
 // user inputs rock/paper/scissors done
 // computer randomly choose rock/paper/scissors done
 // compete user input vs random computer option 
-    // assign winner based on: paper > rock, rock > scissors, scissors > paper
-    // if user input and random computer option is the same, then it's a tie
+// assign winner based on: paper > rock, rock > scissors, scissors > paper
+// if user input and random computer option is the same, then it's a tie
 // keep track of number of wins, first to win 5 rounds is the winner
 // ask if user would like to play again
 
 console.log("Rock Paper Scissors CONSOLE VERSION");
 // console.log("First to 5 wins is the winner!") for first to 5 function game();
-console.log("Play 5 rounds vs a computer!");
-game();
+// console.log("Play 5 rounds vs a computer!");
+// game();
 
 function computerPlay() {
     let computerOption = Math.floor(Math.random() * 3);
@@ -23,7 +23,7 @@ function computerPlay() {
 
 // compare choies between user input and random computer choice
 // returns true on user win and false on user loss; returns nothing on tie which only works for while loop(look into this? or re run to double check)
-    // seems that a function with no return value will return false (or null/undefined?)
+// seems that a function with no return value will return false (or null/undefined?)
 // changed return values for 'for loop' version; 1 for win, 2 for loss, 3 for tied (which is unused)
 function compareChoices(user, computer) {
     let userFirstChar = user.charAt(0).toLowerCase();
@@ -66,8 +66,17 @@ function compareChoices(user, computer) {
         console.log("You need to choose rock, paper, or scissors!");
     }
 }
+
+function playRound(userInput) {
+    // let userInput;
+    let computerInput = computerPlay();
+    console.log(userInput);
+    console.log(computerInput);
+    compareChoices(userInput, computerInput);
+}
+
 // function for first to 5
-function game() {
+/* function game() {
     let userScore = 0;
     let computerScore = 0;
     let roundCount = 1;
@@ -94,7 +103,7 @@ function game() {
     } else { // computerScore === 5
         console.log("You lost.");
     }
-}
+} */
 
 // function for 5 rounds
 /* function game() {
@@ -105,8 +114,7 @@ function game() {
         let userInput = prompt("Rock, Paper, or Scissors?", "");
         let computerInput = computerPlay();
         console.log(`Round ${i}:`);
-        console.log(userInput);
-        console.log(computerInput);
+        console.log(userInput);log(computerInput);
 
         if (compareChoices(userInput, computerInput) === 1) {
             userScore += 1;
@@ -125,3 +133,17 @@ function game() {
         console.log("You tied.");
     }
 } */
+
+let buttons = document.querySelector('.button-container');
+buttons.addEventListener('click', (e) => {
+    const isBtn = (e.target.nodeName === 'INPUT')
+    if (!isBtn) {
+        return;
+    }
+    playRound(e.target.value);
+});
+
+/* input.addEventListener('click', () => {
+    playRound(input.value);
+}); */
+
