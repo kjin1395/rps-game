@@ -66,7 +66,7 @@ function compareChoices(user, computer) {
         console.log("You need to choose rock, paper, or scissors!");
     }
 }
-/* function for first to 5
+// function for first to 5
 function game() {
     let userScore = 0;
     let computerScore = 0;
@@ -79,9 +79,9 @@ function game() {
         console.log(userInput);
         console.log(computerInput);
 
-        if (compareChoices(userInput, computerInput)) {
+        if (compareChoices(userInput, computerInput) === 1) {
             userScore += 1;
-        } else if (!(compareChoices(userInput, computerInput))) {
+        } else if (compareChoices(userInput, computerInput) === 2) {
             computerScore += 1;
         }
         console.log(`User Score: ${userScore}`);
@@ -94,10 +94,10 @@ function game() {
     } else { // computerScore === 5
         console.log("You lost.");
     }
-} */
+}
 
 // function for 5 rounds
-function game() {
+/* function game() {
     let userScore = 0;
     let computerScore = 0;
     
@@ -124,4 +124,4 @@ function game() {
     } else {
         console.log("You tied.");
     }
-}
+} */
