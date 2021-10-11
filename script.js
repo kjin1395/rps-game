@@ -29,10 +29,12 @@ btns.forEach(item => {
                 const para = document.createElement('p');
                 para.textContent = 'You won!';
                 document.querySelector('.results').appendChild(para);
+                playAgain();
              } else if (computerScore === 5) {
                 const para = document.createElement('p');
                 para.textContent = 'You lost :(';
                 document.querySelector('.results').appendChild(para);
+                playAgain();
              }
              roundCount++;
         });
@@ -64,9 +66,6 @@ function displayChoices(userInput, computerInput) {
 }
 
 // compare choies between user input and random computer choice
-// returns true on user win and false on user loss; returns nothing on tie which only works for while loop(look into this? or re run to double check)
-// seems that a function with no return value will return false (or null/undefined?)
-// changed return values for 'for loop' version; 1 for win, 2 for loss, 3 for tied (which is unused)
 function compareChoices(user, computer) {
     let userFirstChar = user.charAt(0).toLowerCase();
     let computerFirstChar = computer.charAt(0).toLowerCase();
@@ -131,6 +130,38 @@ function showScore(user, computer) {
     const para = document.createElement('p');
     para.textContent = `User: ${user} --- Computer: ${computer}`;
     document.querySelector('.results').appendChild(para);
+}
+
+function playAgain() {
+    const para = document.createElement('p');
+    para.textContent = 'Play Again?';
+    document.querySelector('.playAgain').appendChild(para);
+
+    const yes = document.createElement('input');
+    const no = document.createElement('input');
+    yes.classList.add('yes');
+    no.classList.add('no');
+    yes.value = 'yes';
+    no.value = 'no';
+    yes.type = 'button';
+    no.type = 'button';
+
+    yes.addEventListener('click', () => {
+        userScore = 0;
+        computerScore = 0;
+        roundCount = 1;
+        removeChildNodes(document.querySelector('.results'));
+        removeChildNodes(document.querySelector('.playAgain'));
+    });
+
+    document.querySelector('.playAgain').appendChild(yes);
+    document.querySelector('.playAgain').appendChild(no);
+}
+
+function removeChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
 
 // function for 5 rounds
